@@ -8,6 +8,12 @@ module .exports = {
     devServer: {
       static: './dist',
     },
+    plugins: [
+      new HtmlWebpackPlugin({
+          title: 'Todo App',
+          template: './src/index.html'
+      })
+  ],
     output: {
       path: pathh.resolve(__dirname, 'dist'),
       filename: '[name].[hash:8].js',
@@ -19,12 +25,6 @@ module .exports = {
     optimization: {
       runtimeChunk: 'single',
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Todo App',
-            template: './src/index.html'
-        })
-    ],
     module: {
       rules: [
         {
