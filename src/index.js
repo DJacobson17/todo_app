@@ -1,13 +1,19 @@
 import {createTask, getProjects} from "./modules/tasks.js";
+import createModal from "./modules/modal.js";
+import populateProjectList from "./modules/display_controller.js";
+import './styles/style_modal.css';
 
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+console.log(tasks);
+const projects = getProjects(tasks);
 
-const task = createTask('Clean room', 'Clean my room', 'House');
-const newtask = createTask('wash car', 'wash the Palisade', 'Car');
-const task2 = createTask('clean car', 'do inside', 'Car');
-const project = [task, newtask, task2];
-console.log(project);
-
-const projects = getProjects(project);
+// const projects = getProjects(project);
 console.log(projects);
+
+const taskInput = document.querySelector('#task-input');
+taskInput.addEventListener('click', createModal);
+
+populateProjectList(projects);
+
 
 
