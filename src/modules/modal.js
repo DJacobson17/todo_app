@@ -1,5 +1,5 @@
 import {createTask, getProjects} from "./tasks.js";
-
+import populateProjectList from "./display_controller.js";
 
 export default function createModal() {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -75,6 +75,7 @@ export default function createModal() {
     localStorage.setItem('tasks', JSON.stringify(tasks)); 
     console.log(tasks);
     modal.remove();
+    populateProjectList(projects);
   });
 
   modalCancel.addEventListener('click', () => {

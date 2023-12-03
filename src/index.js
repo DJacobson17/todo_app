@@ -2,6 +2,7 @@ import {createTask, getProjects} from "./modules/tasks.js";
 import createModal from "./modules/modal.js";
 import populateProjectList from "./modules/display_controller.js";
 import './styles/style_modal.css';
+import './styles/style_index.css';
 
 const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 console.log(tasks);
