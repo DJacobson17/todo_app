@@ -5,54 +5,8 @@ export default function createModal() {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
   const projects = getProjects(tasks);
   console.log(projects);
-  const modal = document.createElement('div');
-  modal.classList.add('modal');
-  modal.innerHTML = `
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div class="modal-content__title">Add new task</div>
-    <form class="modal-content__form">
-      <div class="modal-content__form__title">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required></input>
-      </div>
-      <div class="modal-content__form__description">
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="5" cols="33" required></textarea>
-      </div>
-      <div class="modal-content__form__project">
-        <label for="project">Project:</label>
-        <input type="text" id="project" name="project" required></input>
-        </div>
-        <div class="modal-content__form__date">
-        <label for="date">Due Date:</label>
-        <input type="date" id="date" name="date" required></input>
-      </div>
-      <div class="modal-content__form__priority">
-        <label for="priority">Priority:</label>
-        <select id="priority" name="priority">
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
-      </div>
-      <div class="modal-content__form__buttons">
-        <button class="modal-content__form__buttons__add">Add</button>
-        <button class="modal-content__form__buttons__cancel">Cancel</button>
-      </div>
-    </form>
-  </div>
-  `;
-  const select = document.getElementById('project');
 
-  // projects.forEach((project) => {
-  //   const option = document.createElement('option');
-  //   option.value = project;
-  //   option.textContent = project;
-  //   select.appendChild(option);
-  // });
-
-  document.body.appendChild(modal);
+  const modalOverlay = document.querySelector('.modal-overlay');
   const modalContent = document.querySelector('.modal-content');
   const modalClose = document.querySelector('.close');
   const modalCancel = document.querySelector('.modal-content__form__buttons__cancel');
@@ -62,10 +16,13 @@ export default function createModal() {
   const modalProject = document.querySelector('#project');
   const modalDate = document.querySelector('#date');
   const modalPriority = document.querySelector('#priority');
-  modalContent.style.display = 'block';
+
+  modalOverlay.classList.add('show');
+  modalContent.classList.add('show');
 
   modalClose.addEventListener('click', () => {
-    modal.remove();
+    modalContent.classList.remove('show');
+    modalOverlay.classList.remove('show');
   });
 
   modalAdd.addEventListener('click', (event) => {
@@ -79,6 +36,7 @@ export default function createModal() {
   });
 
   modalCancel.addEventListener('click', () => {
-    modal.remove();
+    modalContent.classList.remove('show');
+    modalOverlay.classList.remove('show');
   });
 }

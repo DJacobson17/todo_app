@@ -22,19 +22,41 @@ main {
 }
 
 #projectSidebar > div {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 } 
 
-#projectSidebar > div > button {
+.project-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.project-item__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.project-item__buttons > button {
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.project-item__edit {
+  background-color: #4CAF50;
+  color: white;
   border: none;
 }
 
-#projectSidebar > div > button:hover {
-  cursor: pointer;
-}
+.project-item__delete {
+  background-color: #f44336;
+  color: white;
+  border: none;
+} 

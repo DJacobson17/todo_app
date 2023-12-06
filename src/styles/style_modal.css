@@ -1,14 +1,85 @@
-.modal {
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.modal-overlay.show {
+  display: block;
+}
+
+
+.modal-content {
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 101;
   transform: translate(-50%, -50%);
+  background-color: blueviolet;
+  display: none;
+  flex-direction: column;
+
 }
 
-.modal .close {
+.modal-content.show {
+  display: flex;
+}
+
+.close {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 10px;
+  padding-right: 10px;
+  font-size: 1.5em;
   cursor: pointer;
+}
+
+.modal-content__title {
+  display: flex;
+  justify-content: center;;
+
+  color: white;
+  font-size: 2em;
+}
+
+.modal-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5em;
+  padding: .5em;
+  font-size: 1.5em;
+}
+
+.modal-section > input, textarea, select {
+  padding: .5em;
+  font-size: .8em;
+  border-radius: 10px;
+  background-color: lightslategrey;
+}
+
+.modal-content__form__buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 1em;
+}
+
+.modal-content__form__buttons > button {
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5em;
+  cursor: pointer;
+} 
+
+.modal-content__form__buttons > button:hover {
+  background-color: lightgray;
+  transform: scale(1.1);
 }
