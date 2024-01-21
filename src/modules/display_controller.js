@@ -1,3 +1,5 @@
+import { getProjects, getTasks } from "./tasks";
+
 //populate project list
 
 
@@ -23,5 +25,20 @@ export default function populateProjectList(arr) {
     projectItem.appendChild(projectItemButtons);
     projectList.appendChild(projectItem);
   });
+
+  let deleteProjectButtons = document.querySelectorAll('.project-item__delete');
+  console.log(deleteProjectButtons);
+  deleteProjectButtons.forEach(button => button.addEventListener('click', deleteProject));
+
+  function deleteProject() {
+    console.log('delete');
+    const project = this.parentElement.parentElement.firstChild.textContent;
+    let tasks = getTasks();
+    tasks = tasks.filter(task => task.project !== project);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    populateProjectList(getProjects());
+  
+  }
+  
 }
 
