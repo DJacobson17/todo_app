@@ -54,13 +54,23 @@ function populateTasks(project) {
   console.log(tasks);
   console.log(project);
   let taskList__header = document.querySelector('.taskList__header');
+  if (tasks.length === 0) {
+    taskList__header.innerHTML = '';
+  } else {
   taskList__header.innerHTML = project;
+  };
+  
+
   let taskList = document.getElementById('taskList');
   taskList.innerHTML = '';
   tasks.forEach(task => {
     const taskItem = document.createElement('div');
     taskItem.classList.add('task-item');
     const taskItemTitle = document.createElement('div');
+    const taskItemCheckbox = document.createElement('input');
+    taskItemCheckbox.setAttribute('type', 'checkbox');
+    taskItemCheckbox.classList.add('task-item__checkbox');
+    taskItem.appendChild(taskItemCheckbox);
     taskItemTitle.classList.add('task-item__title');
     taskItemTitle.textContent = task.title;
     const taskItemDueDate = document.createElement('div');
@@ -81,6 +91,20 @@ function populateTasks(project) {
     taskItem.appendChild(taskItemButtons);
     taskList.appendChild(taskItem);
   });
+
+  let deleteTaskButtons = document.querySelectorAll('.task-item__delete');
+  deleteTaskButtons.forEach(button => button.addEventListener('click', deleteTask));
+
+  function deleteTask() {
+    const delete_task = this.parentElement.parentElement.childNodes[1].textContent;
+    let tasks = getTasks();
+    console.log(delete_task);
+    tasks = tasks.filter(task => task.title !== delete_task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    populateProjectList(getProjects());
+    populateTasks(project);
+
+  }
 }
 
-export { populateProjectList };
+export { populateProjectList};

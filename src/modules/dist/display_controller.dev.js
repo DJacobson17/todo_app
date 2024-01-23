@@ -68,13 +68,24 @@ function populateTasks(project) {
   console.log(tasks);
   console.log(project);
   var taskList__header = document.querySelector('.taskList__header');
-  taskList__header.innerHTML = project;
+
+  if (tasks.length === 0) {
+    taskList__header.innerHTML = '';
+  } else {
+    taskList__header.innerHTML = project;
+  }
+
+  ;
   var taskList = document.getElementById('taskList');
   taskList.innerHTML = '';
   tasks.forEach(function (task) {
     var taskItem = document.createElement('div');
     taskItem.classList.add('task-item');
     var taskItemTitle = document.createElement('div');
+    var taskItemCheckbox = document.createElement('input');
+    taskItemCheckbox.setAttribute('type', 'checkbox');
+    taskItemCheckbox.classList.add('task-item__checkbox');
+    taskItem.appendChild(taskItemCheckbox);
     taskItemTitle.classList.add('task-item__title');
     taskItemTitle.textContent = task.title;
     var taskItemDueDate = document.createElement('div');
@@ -95,4 +106,20 @@ function populateTasks(project) {
     taskItem.appendChild(taskItemButtons);
     taskList.appendChild(taskItem);
   });
+  var deleteTaskButtons = document.querySelectorAll('.task-item__delete');
+  deleteTaskButtons.forEach(function (button) {
+    return button.addEventListener('click', deleteTask);
+  });
+
+  function deleteTask() {
+    var delete_task = this.parentElement.parentElement.childNodes[1].textContent;
+    var tasks = (0, _tasks.getTasks)();
+    console.log(delete_task);
+    tasks = tasks.filter(function (task) {
+      return task.title !== delete_task;
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    populateProjectList((0, _tasks.getProjects)());
+    populateTasks(project);
+  }
 }
