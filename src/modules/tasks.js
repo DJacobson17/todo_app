@@ -1,9 +1,11 @@
-function createTask(title, description, project, comleted= false) {
+function createTask(title, description, project, due, priority, completed= false) {
   const task = {
         title,
         description,
         project,
-        comleted,
+        due,
+        priority,
+        completed,
     };
     
     return task;

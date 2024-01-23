@@ -3,20 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/6ff0d2c6e5.js" crossorigin="anonymous"></script>
   <title>Super Cool Todo App</title>
-<script defer src="runtime.d59ac907.js"></script><script defer src="main.d59ac907.js"></script></head>
+<script defer src="runtime.22f14a1f.js"></script><script defer src="main.22f14a1f.js"></script></head>
 <body>
   <div class="container">
     <header>Super Cool Todo App</header>
     <main>
       <div id="projectSidebar">
-      <input type="text" name="" id="project-input" placeholder="Add a new project...">
-      Projects
-      <ul id="projectList"></ul>
+        Projects
+      <br>
+      
+      <div id="projectList"></div>
+      </div> 
+    
+      <div id="tasks" class="tasks">
+        <div class="taskList__header"></div>
+        <div id="taskList">
+        </div>
+        <i id="task-input" class="fa-solid fa-circle-plus fa-2xl" style="color: #880c0c;"></i> 
       </div>
-      <ul id="tasks" class="tasks">
-        <button  class="btn btn-open" id="task-input">Add Task</button>
+      
+      <div class="modal-overlay" id="modal-overlay"></div>
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-content__title">Add new task</div>
+        <form class="modal-content__form">
+          <div class="modal-section modal-content__form__title">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required></input>
+          </div>
+          <div class="modal-section modal-content__form__description">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="5" cols="33" required></textarea>
+          </div>
+          <div class="modal-section modal-content__form__project">
+            <label for="project">Project</label>
+            <input type="text" id="project" name="project" required></input>
+            </div>
+            <div class="modal-section modal-content__form__date">
+            <label for="date">Due Date</label>
+            <input type="date" id="date" name="date"></input>
+          </div>
+          <div class="modal-section modal-content__form__priority">
+            <label for="priority">Priority</label>
+            <select id="priority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="modal-content__form__buttons">
+            <input type="submit" value="Add">
+            <button class="modal-content__form__buttons__cancel">Cancel</button>
+          </div>
+        </form>
       </div>
+    
     </main>
   </div>
 

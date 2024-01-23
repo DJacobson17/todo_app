@@ -36,6 +36,12 @@ function populateProjectList(arr) {
     tasks = tasks.filter(task => task.project !== project);
     localStorage.setItem('tasks', JSON.stringify(tasks));
     populateProjectList(getProjects());
+    const taskList__header = document.querySelector('.taskList__header');
+    if (taskList__header.textContent === project) {
+      const taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+      taskList__header.textContent = '';
+    }
   
   }
   
@@ -57,6 +63,9 @@ function populateTasks(project) {
     const taskItemTitle = document.createElement('div');
     taskItemTitle.classList.add('task-item__title');
     taskItemTitle.textContent = task.title;
+    const taskItemDueDate = document.createElement('div');
+    taskItemDueDate.classList.add('task-item__due-date');
+    taskItemDueDate.textContent = task.due;
     const taskItemButtons = document.createElement('div');
     taskItemButtons.classList.add('task-item__buttons');
     const taskItemEdit = document.createElement('button');
@@ -68,6 +77,7 @@ function populateTasks(project) {
     taskItemDelete.textContent = 'Delete';
     taskItemButtons.appendChild(taskItemDelete);
     taskItem.appendChild(taskItemTitle);
+    taskItem.appendChild(taskItemDueDate);
     taskItem.appendChild(taskItemButtons);
     taskList.appendChild(taskItem);
   });
