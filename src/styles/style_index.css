@@ -24,9 +24,10 @@ main {
   width: 20%;
   background-color: #f1f1f1;
   padding: 20px;
-  font-size: 25px;
+  font-size: 35px;
   align-items: center;
   min-width: 200px;
+  min-height: 100vh;
 }
 
 #projectSidebar > div {
@@ -57,12 +58,6 @@ main {
   cursor: pointer;
 }
 
-.project-item__edit {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-}
-
 .project-item__delete {
   background-color: #f44336;
   color: white;
@@ -77,8 +72,36 @@ main {
   margin-top: 20px;
   padding: 20px;
   font-size: 25px;
+  position:relative;
+
+}
+
+.taskList__header {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  position: relative;
+  font-size: 2em;
+}
+
+#taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 25px;
+  
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ddd;
+  cursor: pointer;
 }
 
 #tasks > i {

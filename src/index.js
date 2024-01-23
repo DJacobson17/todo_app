@@ -1,6 +1,6 @@
 import {createTask, getProjects, getTasks} from "./modules/tasks.js";
 import {showModal, closeModal} from "./modules/modal.js";
-import populateProjectList from "./modules/display_controller.js";
+import {populateProjectList} from "./modules/display_controller.js";
 import './styles/style_modal.css';
 import './styles/style_index.css';
 
